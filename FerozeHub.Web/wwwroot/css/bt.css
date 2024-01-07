@@ -1,0 +1,48 @@
+
+.create-coupon-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff; /* Bootstrap primary button color */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Add a smooth transition effect */
+}
+
+.create-coupon-button:hover {
+    background-color: #dfe0e1; /* Change background color on hover */
+}
+
+.card {
+    width: 100%; /* Make cards take 100% width of the container */
+}
+
+.create-coupon-button-delete {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #dc3545; /* Set your desired background color */
+    color: #fff; /* Set your desired text color */
+    border: none;
+    cursor: pointer;
+}
+
+.create-coupon-button-delete::before {
+    /* Unicode for the 'multiplication x' symbol */
+    margin-right: 5px;
+}
+
+.create-coupon-button-delete:hover::before {
+    animation: rotateAnimation 0.5s ease-in-out;
+}
+
+@keyframes rotateAnimation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

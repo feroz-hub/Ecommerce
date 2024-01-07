@@ -1,0 +1,38 @@
+@model List<CouponDto>
+
+@{
+    ViewData["Title"] = "Coupons";
+}
+<head>
+    <link rel="stylesheet" href="~/css/bt.css" asp-append-version="true"/>
+    <title>Coupons</title>
+</head>
+<body>
+<h1>Coupons</h1>
+<div class="container-rm">
+    <div>
+        <a asp-controller="Coupon" class="btn btn-secondary accordion-button text-lg-end create-coupon-button table-glow"  asp-action="Create">Create Coupon</a>
+    </div>
+    <div class="row row-cols-1 g-4">
+        @foreach (var coupon in Model)
+        {
+            <div class="col-md-6"> <!-- Adjust the column size as needed -->
+                <div class="card h-100 table-glow">
+                    <div class="card-body d-flex flex-column">
+                        <h4 class="card-title fw-bolder">@coupon.CouponCode</h4>
+                        <p class="card-text">Discount Amount: ₹&nbsp;@coupon.DiscountAmount</p>
+                        <p class="card-text">Minimum Amount: ₹&nbsp;@coupon.MinAmount</p>
+       
+                        <!-- Move the delete button to the bottom with margin-top for spacing -->
+                        <a asp-action="Delete" asp-controller="Coupon" asp-route-couponId="@coupon.CouponId" class="btn btn-danger mt-auto create-coupon-button-delete">Delete</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>
+
+<!-- Bootstrap JS scripts (make sure to include jQuery and Popper.js if needed) -->
+<script src="your-bootstrap-js-script.js"></script>
+</body>

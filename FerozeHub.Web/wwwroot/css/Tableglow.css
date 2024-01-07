@@ -1,0 +1,26 @@
+.table-glow {
+    box-shadow: 0 0 20px rgba(16, 169, 169, 0.7); /* Adjust the color and intensity as needed */
+    border-collapse: separate;
+}
+
+.table-glow thead th,
+.table-glow tbody td {
+    border: 2px solid #dee2e6; /* Ensure border is defined for cells */
+}
+
+.table-glow tbody td {
+    position: relative;
+}
+
+.table-glow tbody td::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 2px solid rgba(255, 255, 0, 0.7); /* Adjust the color and intensity as needed */
+    border-radius: 5px; /* Adjust the radius as needed */
+    pointer-events: none;
+    z-index: -1;
+}
