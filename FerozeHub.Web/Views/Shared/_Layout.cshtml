@@ -24,22 +24,48 @@
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                     </li>
                     <li class="nav-item dropdown ">
                         <a class="nav-link dropdown-item:hover" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Content Management
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item"asp-area="" asp-controller="Coupon" asp-action="Index" >Coupon</a></li>
-                            <li><a class="dropdown-item">Another</a></li>
+                            <li><a class="dropdown-item"asp-area="" asp-controller="Coupon" asp-action="IndexCoupon" >Coupon</a></li>
+                            <li><a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="Index">Product</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item">Something</a></li>
+                            <li><a class="dropdown-item" asp-area="" asp-controller="Cart" asp-action="CartIndex">Shopping Cart</a></li>
                         </ul>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link " asp-area="" asp-controller="Cart" asp-action="CartIndex">
+                            &nbsp; <i class="bi bi-cart"></i>&nbsp;
+                        </a>
+                    </li>
+                    
+                </ul>
+                <ul class="navbar-nav flex-grow-1 justify-content-end">
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Auth" asp-action="Login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Auth" asp-action="Register">Register</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Hello @User.Identity.Name</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Auth" asp-action="Logout">Logout</a>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>

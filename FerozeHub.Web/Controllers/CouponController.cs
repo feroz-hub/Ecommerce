@@ -8,7 +8,7 @@ namespace FerozeHub.Web.Controllers;
 public class CouponController(ICouponService couponService) : Controller
 {
     // GET
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> IndexCoupon()
     {
         List<CouponDto>? list = new();
         ResponseDto response =await couponService.GetAllCouponAsync();
@@ -23,12 +23,12 @@ public class CouponController(ICouponService couponService) : Controller
         return View(list);
     }
  
-    public async Task<IActionResult> Create()
+    public async Task<IActionResult> CreateCoupon()
     {
         return View();
     }
     [HttpPost]
-    public async Task<IActionResult>Create(CouponDto couponDto)
+    public async Task<IActionResult>CreateCoupon(CouponDto couponDto)
     {
         if (ModelState.IsValid)
         {
@@ -36,7 +36,7 @@ public class CouponController(ICouponService couponService) : Controller
             if(response != null && response.IsSuccess)
             {
                 TempData["success"] = "Coupon Created Successfully";
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(IndexCoupon));
             }
             else
             {
@@ -47,7 +47,7 @@ public class CouponController(ICouponService couponService) : Controller
  
 	}
  
-    public async Task<IActionResult> Delete(int couponId)
+    public async Task<IActionResult> DeleteCoupon(int couponId)
     {
         ResponseDto? response= await couponService.GetCouponByIdAsync(couponId);
         if(response != null && response.IsSuccess)
@@ -64,13 +64,13 @@ public class CouponController(ICouponService couponService) : Controller
     }
  
     [HttpPost]
-    public async Task<IActionResult> Delete(CouponDto couponDto)
+    public async Task<IActionResult> DeleteCoupon(CouponDto couponDto)
     {
         ResponseDto? response = await couponService.DeleteCouponAsync(couponDto.CouponId);
         if(response != null && response.IsSuccess)
         {
             TempData["success"] = "Coupon Deleted Successfully";
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(IndexCoupon));
         }
         else
         {

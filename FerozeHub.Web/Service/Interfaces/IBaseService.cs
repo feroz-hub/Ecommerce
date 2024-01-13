@@ -4,5 +4,5 @@ namespace FerozeHub.Web.Service.Interfaces;
 
 public interface IBaseService
 {
-    public Task<ResponseDto?> SendAsync(RequestDto request);
+    public Task<ResponseDto?> SendAsync(RequestDto request,bool withBearer=true);
 }

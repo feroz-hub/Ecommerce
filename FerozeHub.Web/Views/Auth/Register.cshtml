@@ -1,0 +1,54 @@
+@model RegistrationRequestDto
+ <link rel="stylesheet" href="~/css/Tableglow.css"/>
+<form method="post">
+    <div class="container border p-4">
+        <div class="row text-center p-3">
+            <h1>Register</h1>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6 offset-md-3 pb-2">
+                <input asp-for="Email" class="form-control" placeholder="Email..." />
+                <span asp-validation-for="Email" class="text-danger" />
+            </div>
+            <div class="col-12 col-md-6 offset-md-3 pb-2">
+                <input asp-for="Name" class="form-control" placeholder="Name..." />
+                <span asp-validation-for="Name" class="text-danger" />
+            </div>
+            <div class="col-12 col-md-6 offset-md-3 pb-2">
+                <input asp-for="PhoneNumber" class="form-control" placeholder="Phone Number..." />
+                <span asp-validation-for="PhoneNumber" class="text-danger" />
+            </div>
+           <div class="col-12 col-md-6 offset-md-3 pb-2">
+               <div class="input-group">
+                   <input asp-for="Password" type="password" class="form-control" placeholder="Password..." id="passwordInput" />
+                   <div class="input-group-append">
+                       <span class="input-group-text" id="togglePassword">
+                           <i class="bi bi-eye" id="eyeIcon"></i>
+                       </span>
+                   </div>
+               </div>
+               <span asp-validation-for="Password" class="text-danger" />
+           </div>
+            <div class="col-12 col-md-6 offset-md-3 pb-2">
+                <div class="form-group">
+                    <select class="form-control custom-select " asp-for="Role">
+                        <option value="">Select Role</option>
+                        @foreach (var role in Enum.GetValues(typeof(Role)))
+                        {
+                            <option value="@role">@role</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 offset-md-3 pb-3">
+                <button type="submit" class="form-control btn btn-success" value="Submit">Register</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/Password.js"></script>
+}

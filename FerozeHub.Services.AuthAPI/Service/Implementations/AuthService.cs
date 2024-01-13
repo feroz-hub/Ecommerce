@@ -30,7 +30,9 @@ public class AuthService(ApplicationDbContext dbContext,UserManager<ApplicationU
  
  
             };
-            var token = jwtTokenGenerator.GenerateToken(user);
+            var roles = await userManager.GetRolesAsync(user);
+            var token = jwtTokenGenerator.GenerateToken(user,roles);
+            
             LoginResponseDto loginResponseDto = new()
             {
                 User = userDto,
@@ -39,9 +41,26 @@ public class AuthService(ApplicationDbContext dbContext,UserManager<ApplicationU
  
             return loginResponseDto;
         }
- 
- 
- 
+
+        public async Task<bool> AssignRole(string email, string roleName)
+        {
+            var user = dbContext.ApplicationUsers.FirstOrDefault(u => u.Email.ToLower() == email.ToLower());
+            if (user != null)
+            {
+                if (!roleManager.RoleExistsAsync(roleName).GetAwaiter().GetResult())
+                {
+                    roleManager.CreateAsync(new IdentityRole(roleName)).GetAwaiter().GetResult();
+                    
+                }
+                await userManager.AddToRoleAsync(user,roleName);
+                return true;
+            }
+            return false;
+
+            
+        }
+
+
         public async Task<string> Register(RegistrationRequestDto registrationRequestDto)
         {
             ApplicationUser user = new()

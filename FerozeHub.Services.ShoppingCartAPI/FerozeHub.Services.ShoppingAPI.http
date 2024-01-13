@@ -1,0 +1,6 @@
+@FerozeHub.Services.ShoppingAPI_HostAddress = http://localhost:5095
+
+GET {{FerozeHub.Services.ShoppingAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

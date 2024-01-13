@@ -10,7 +10,7 @@ namespace FerozeHub.Services.AuthAPI.Service.Implementations;
 
 public class JwtTokenGenerator(IOptions<JwtOptions> jwtOptions):IJwtTokenGenerator
 {
-    public string GenerateToken(ApplicationUser applicationUser)
+    public string GenerateToken(ApplicationUser applicationUser,IEnumerable<string>roles)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
  
@@ -21,8 +21,8 @@ public class JwtTokenGenerator(IOptions<JwtOptions> jwtOptions):IJwtTokenGenerat
             new (JwtRegisteredClaimNames.Email, applicationUser.Email),
             new (JwtRegisteredClaimNames.Sub,applicationUser.Id),
             new (JwtRegisteredClaimNames.Name, applicationUser.Name.ToString()),
-        };
- 
+        }; 
+        claimList.AddRange(roles.Select(role=>new Claim(ClaimTypes.Role,role)));
         var tokenDescriptor = new SecurityTokenDescriptor()
         {
             Audience = jwtOptions.Value.Audience,

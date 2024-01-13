@@ -11,7 +11,7 @@
 <h1>Coupons</h1>
 <div class="container-rm">
     <div>
-        <a asp-controller="Coupon" class="btn btn-secondary accordion-button text-lg-end create-coupon-button table-glow"  asp-action="Create">Create Coupon</a>
+        <a asp-controller="Coupon" class="btn btn-secondary accordion-button text-lg-end create-coupon-button table-glow"  asp-action="CreateCoupon">Create Coupon</a>
     </div>
     <div class="row row-cols-1 g-4">
         @foreach (var coupon in Model)
@@ -24,7 +24,7 @@
                         <p class="card-text">Minimum Amount: ₹&nbsp;@coupon.MinAmount</p>
        
                         <!-- Move the delete button to the bottom with margin-top for spacing -->
-                        <a asp-action="Delete" asp-controller="Coupon" asp-route-couponId="@coupon.CouponId" class="btn btn-danger mt-auto create-coupon-button-delete">Delete</a>
+                        <a asp-action="DeleteCoupon" asp-controller="Coupon" asp-route-couponId="@coupon.CouponId" class="btn btn-danger mt-auto create-coupon-button-delete">Delete</a>
                     </div>
                 </div>
             </div>

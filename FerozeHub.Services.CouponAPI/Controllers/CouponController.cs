@@ -2,12 +2,14 @@ using AutoMapper;
 using FerozeHub.Services.CouponAPI.Data;
 using FerozeHub.Services.CouponAPI.Models;
 using FerozeHub.Services.CouponAPI.Models.Dto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FerozeHub.Services.CouponAPI.Controllers;
 
 [Route("api/couponAPI")]
 [ApiController]
+[Authorize]
 public class CouponController(ApplicationDbContext dbContext,IMapper mapper) : BaseController 
 {
     [HttpGet]
@@ -40,7 +42,7 @@ public class CouponController(ApplicationDbContext dbContext,IMapper mapper) : B
         }
     }
     [HttpGet]
-    [Route("GetByCode{code}")]
+    [Route("GetByCode/{code}")]
     public IActionResult GetByCode(string code)
     {
         try
@@ -62,7 +64,7 @@ public class CouponController(ApplicationDbContext dbContext,IMapper mapper) : B
         }
     }
     [HttpPost]
-    
+    [Authorize(Roles = "ADMIN")]
     public IActionResult Create(CouponDto obj)
     {
         try
@@ -86,7 +88,8 @@ public class CouponController(ApplicationDbContext dbContext,IMapper mapper) : B
         }
     }
     [HttpPut]
-    
+    [Authorize(Roles = "ADMIN")]
+
     public IActionResult Update(CouponDto obj)
     {
         try
@@ -112,6 +115,7 @@ public class CouponController(ApplicationDbContext dbContext,IMapper mapper) : B
     
     [HttpDelete]
     [Route("{id:int}")]
+    [Authorize(Roles = "ADMIN")]
     public IActionResult Delete(int id)
     {
         try

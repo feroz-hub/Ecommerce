@@ -1,26 +1,61 @@
-.table-glow {
-    box-shadow: 0 0 20px rgba(16, 169, 169, 0.7); /* Adjust the color and intensity as needed */
-    border-collapse: separate;
+/*.table-glow {*/
+/*    box-shadow: 0 0 20px rgba(16, 169, 169, 0.7); !* Adjust the color and intensity as needed *!*/
+/*    border-collapse: separate;*/
+/*}*/
+
+/*.table-glow thead th,*/
+/*.table-glow tbody td {*/
+/*    border: 2px solid #dee2e6; !* Ensure border is defined for cells *!*/
+/*}*/
+
+/*.table-glow tbody td {*/
+/*    position: relative;*/
+/*}*/
+
+/*.table-glow tbody td::before {*/
+/*    content: '';*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    right: 0;*/
+/*    bottom: 0;*/
+/*    left: 0;*/
+/*    border: 2px solid rgba(255, 255, 0, 0.7); !* Adjust the color and intensity as needed *!*/
+/*    border-radius: 5px; !* Adjust the radius as needed *!*/
+/*    pointer-events: none;*/
+/*    z-index: -1;*/
+/*}*/
+
+/* Base styling for custom dropdown */
+.custom-select {
+    background-color: #fff; /* Adjust for better contrast */
+    border: 1px solid #ccc; /* Adjust border style */
+    border-radius: 5px; /* Apply rounded corners */
+    padding: 10px; /* Adjust padding for visual appeal */
+    font-size: 16px; /* Adjust font size for readability */
+    cursor: pointer; /* Indicate interactivity */
 }
 
-.table-glow thead th,
-.table-glow tbody td {
-    border: 2px solid #dee2e6; /* Ensure border is defined for cells */
+/* Highlight selected option */
+.custom-select option:checked {
+    background-color: #f0f0f0; /* Adjust highlight color */
+    color: #000; /* Ensure text contrast */
 }
 
-.table-glow tbody td {
-    position: relative;
+/* Optional hover effect */
+.custom-select:hover {
+    border-color: #999; /* Change border color on hover */
 }
 
-.table-glow tbody td::before {
-    content: '';
+.password-field {
+    padding-right: 40px; /* Adjust for eye icon spacing */
+}
+
+.password-visibility-toggle {
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    border: 2px solid rgba(255, 255, 0, 0.7); /* Adjust the color and intensity as needed */
-    border-radius: 5px; /* Adjust the radius as needed */
-    pointer-events: none;
-    z-index: -1;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    cursor: pointer;
 }

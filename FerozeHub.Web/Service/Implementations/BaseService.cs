@@ -7,9 +7,9 @@ using Newtonsoft.Json;
 
 namespace FerozeHub.Web.Service.Implementations;
 
-public class BaseService(IHttpClientFactory clientFactory) : IBaseService
+public class BaseService(IHttpClientFactory clientFactory,ITokenProvider tokenProvider) : IBaseService
 {
-    public async Task<ResponseDto?> SendAsync(RequestDto request)
+    public async Task<ResponseDto?> SendAsync(RequestDto request,bool withBearur=true)
     {
         try
         {
@@ -17,6 +17,11 @@ public class BaseService(IHttpClientFactory clientFactory) : IBaseService
             HttpRequestMessage message = new();
             message.Headers.Add("Accept", "application/json");
 
+            if (withBearur)
+            {
+                var token = tokenProvider.GetToken();
+                message.Headers.Add("Authorization", $"Bearer {token}");
+            }
             //token
             message.RequestUri = new Uri(request.Url);
             if (request.Data != null)

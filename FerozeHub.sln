@@ -14,6 +14,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FerozeHub.Web", "FerozeHub.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FerozeHub.Services.AuthAPI", "FerozeHub.Services.AuthAPI\FerozeHub.Services.AuthAPI.csproj", "{87804774-62F8-43B3-9D60-074FCBA0383B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FerozeHub.Services.ProductAPI", "FerozeHub.Services.ProductAPI\FerozeHub.Services.ProductAPI.csproj", "{B341665B-1F09-461B-83D0-CE9F67462A5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FerozeHub.Services.ShoppingCartAPI", "FerozeHub.Services.ShoppingCartAPI\FerozeHub.Services.ShoppingCartAPI.csproj", "{1742431F-1B30-4AD1-8B42-F0A6ABDCF2E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +27,8 @@ Global
 		{5B5EDCD9-A897-4DF3-88F7-CA1F37D2AEB6} = {E2A349B8-63D0-43F2-8866-2E2B44FB4E58}
 		{2C9CCCEE-5293-444E-B8C1-7758270588C4} = {9E95C8AE-54E1-45D6-8FB7-797BBBCD1F38}
 		{87804774-62F8-43B3-9D60-074FCBA0383B} = {E2A349B8-63D0-43F2-8866-2E2B44FB4E58}
+		{B341665B-1F09-461B-83D0-CE9F67462A5D} = {E2A349B8-63D0-43F2-8866-2E2B44FB4E58}
+		{1742431F-1B30-4AD1-8B42-F0A6ABDCF2E4} = {E2A349B8-63D0-43F2-8866-2E2B44FB4E58}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{5B5EDCD9-A897-4DF3-88F7-CA1F37D2AEB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -37,5 +43,13 @@ Global
 		{87804774-62F8-43B3-9D60-074FCBA0383B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87804774-62F8-43B3-9D60-074FCBA0383B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87804774-62F8-43B3-9D60-074FCBA0383B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B341665B-1F09-461B-83D0-CE9F67462A5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B341665B-1F09-461B-83D0-CE9F67462A5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B341665B-1F09-461B-83D0-CE9F67462A5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B341665B-1F09-461B-83D0-CE9F67462A5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1742431F-1B30-4AD1-8B42-F0A6ABDCF2E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1742431F-1B30-4AD1-8B42-F0A6ABDCF2E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1742431F-1B30-4AD1-8B42-F0A6ABDCF2E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1742431F-1B30-4AD1-8B42-F0A6ABDCF2E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

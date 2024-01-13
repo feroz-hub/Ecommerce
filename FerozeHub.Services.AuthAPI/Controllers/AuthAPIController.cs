@@ -32,5 +32,18 @@ public class AuthAPIController(IAuthService authService) : BaseController
  
         return CreateResponse(loginResposne, true, "Logged In Successfully");
     }
+    
+    [HttpPost("assignRole")]
+    public async Task<IActionResult> AssignRole([FromBody] RegistrationRequestDto registrationRequestDto)
+    {
+        var assignRole=await authService.AssignRole(registrationRequestDto.Email, registrationRequestDto.Role.ToUpper());
+ 
+        if(!assignRole)
+        {
+            return CreateResponse(null, false, "Error Encountered");
+        }
+ 
+        return CreateResponse(null, true, "Role assigned successfully");
+    }
  
 }
