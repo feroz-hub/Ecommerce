@@ -1,0 +1,6 @@
+@FerozeHub.Services.EmailAPI_HostAddress = http://localhost:5237
+
+GET {{FerozeHub.Services.EmailAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

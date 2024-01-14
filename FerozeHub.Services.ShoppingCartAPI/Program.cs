@@ -48,7 +48,6 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddScoped<IEventBus, RabbitMqBus>();
 builder.Services.AddMediatR(cfg=>cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
-builder.Services.AddScoped<IEventBus, RabbitMqBus>();
 builder.Services.AddSingleton(typeof(Dictionary<string, List<Type>>));
 builder.Services.AddSingleton(typeof(List<Type>));
 builder.Services.AddHttpContextAccessor();
