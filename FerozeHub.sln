@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FerozeHub.MessageBus", "Fer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FerozeHub.RabbitMqBus", "FerozeHub.RabbitMqBus\FerozeHub.RabbitMqBus.csproj", "{2B1EA1BC-2C7D-4624-9C70-E55D9D91E1F3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FerozeHub.Services.EmailAPI", "FerozeHub.Services.EmailAPI\FerozeHub.Services.EmailAPI.csproj", "{59C18E4F-E8BE-43D7-BDB2-2F7CE3AD9152}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,7 @@ Global
 		{1742431F-1B30-4AD1-8B42-F0A6ABDCF2E4} = {E2A349B8-63D0-43F2-8866-2E2B44FB4E58}
 		{AA932063-6885-44C9-912A-1D6931F71CFB} = {025C1A7D-2A7C-4A38-9856-734DD345D607}
 		{2B1EA1BC-2C7D-4624-9C70-E55D9D91E1F3} = {025C1A7D-2A7C-4A38-9856-734DD345D607}
+		{59C18E4F-E8BE-43D7-BDB2-2F7CE3AD9152} = {E2A349B8-63D0-43F2-8866-2E2B44FB4E58}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{5B5EDCD9-A897-4DF3-88F7-CA1F37D2AEB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -65,5 +68,9 @@ Global
 		{2B1EA1BC-2C7D-4624-9C70-E55D9D91E1F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B1EA1BC-2C7D-4624-9C70-E55D9D91E1F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B1EA1BC-2C7D-4624-9C70-E55D9D91E1F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59C18E4F-E8BE-43D7-BDB2-2F7CE3AD9152}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59C18E4F-E8BE-43D7-BDB2-2F7CE3AD9152}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59C18E4F-E8BE-43D7-BDB2-2F7CE3AD9152}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59C18E4F-E8BE-43D7-BDB2-2F7CE3AD9152}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

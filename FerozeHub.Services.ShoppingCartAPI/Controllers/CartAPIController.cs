@@ -11,7 +11,7 @@ namespace FerozeHub.Services.ShoppingAPI.Controllers;
 [Route("api/cartAPI")]
 [ApiController]
 
-public class CartAPIController(ApplicationDbContext dbContext, IMapper mapper,IProductService productService,ICouponService couponService) : BaseController
+public class CartAPIController(ApplicationDbContext dbContext, IMapper mapper,IProductService productService,ICouponService couponService,IEmailService emailService) : BaseController
 {
     [HttpGet("GetCart/{userId}")]
     public async Task<IActionResult> GetCartAsync(string userId)
@@ -160,5 +160,12 @@ public class CartAPIController(ApplicationDbContext dbContext, IMapper mapper,IP
         {
             return CreateResponse(null,false,"Error Removing Cart. " + ex.Message);
         }
+    }
+
+    [HttpPost("EmailCartRequest")]
+    public async Task<IActionResult> CreateEmailCart([FromBody] CartDto cartDto)
+    {
+        emailService.EmailCartSend(cartDto);
+        return CreateResponse(null,true,"Email");
     }
 }

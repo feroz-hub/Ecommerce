@@ -1,6 +1,9 @@
+using FerozeHub.MessageBus.Bus;
+using FerozeHub.RabbitMqBus;
 using FerozeHub.Web.Service.Implementations;
 using FerozeHub.Web.Service.Interfaces;
 using FerozeHub.Web.Utility;
+using MediatR;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,6 +28,8 @@ builder.Services.AddScoped<IAuthService,AuthService>();
 builder.Services.AddScoped<ITokenProvider,TokenProvider>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICartService,CartService>();
+
+
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
 {

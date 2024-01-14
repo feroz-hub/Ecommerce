@@ -44,4 +44,14 @@ public class CartService(IBaseService baseService):ICartService
             Data = cartDto
         });
     }
+
+    public async Task<ResponseDto?> EmailCart(CartDto cartDto)
+    {
+        return await baseService.SendAsync(new RequestDto()
+        {
+            Url = SD.CartAPI + "/api/cartAPI/EmailCartRequest",
+            ApiType = ApiType.POST,
+            Data = cartDto
+        });
+    }
 }

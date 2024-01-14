@@ -67,4 +67,19 @@ public class CartController(ICartService cartService) : Controller
 
         return View();
     }
+    [HttpPost]
+    public async Task<IActionResult> EmailCart(CartDto cartDto)
+    {
+        CartDto cart = await LoadCartDtoBasedonLoggedInUser();
+        cart.CartHeader.Email= User.Claims.Where(u => u.Type == JwtRegisteredClaimNames.Email)?.FirstOrDefault()?.Value;
+
+        ResponseDto responseDto = await cartService.EmailCart(cart);
+        if (responseDto != null && responseDto.IsSuccess)
+        {
+            TempData["success"] = "Email will be processed and sent shortly";
+            return RedirectToAction(nameof(CartIndex));
+        }
+
+        return View();    
+    }
 }

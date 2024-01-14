@@ -12,4 +12,9 @@
       <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.0.3" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\FerozeHub.MessageBus\FerozeHub.MessageBus.csproj" />
+      <ProjectReference Include="..\FerozeHub.RabbitMqBus\FerozeHub.RabbitMqBus.csproj" />
+    </ItemGroup>
+
 </Project>
