@@ -9,7 +9,7 @@ public class EmailCommandHandler(IEventBus eventBus) : IRequestHandler<CreateEma
 {
     public Task<bool> Handle(CreateEmailCommand request, CancellationToken cancellationToken)
     {
-        eventBus.Publish(new EmailCreatedEvent(request.cartDto));
+        eventBus.Publish(new EmailCreatedEvent(request.cartDto),"test");
         return Task.FromResult(true);
     }
 }

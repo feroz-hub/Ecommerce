@@ -8,6 +8,7 @@ using FerozeHub.Services.EmailAPI.Services;
 using FerozeHub.Services.EmailAPI.Utility;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using MQTTnet.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,10 +20,10 @@ EmailSD.EmailUsername=builder.Configuration["EmailConfiguration:EmailUsername"];
 EmailSD.EmailPassword = builder.Configuration["EmailConfiguration:EmailPassword"];
 builder.Services.AddDbContext<ApplicationDbContext>(option =>
     option.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddScoped<IEventBus, RabbitMqBus>(sp =>
+builder.Services.AddScoped<IEventBus, EventBus>(sp =>
 {
     var scopefactory = sp.GetRequiredService<IServiceScopeFactory>();
-    return new RabbitMqBus(sp.GetService<IMediator>(), scopefactory);
+    return new EventBus(sp.GetService<IMediator>(), scopefactory,sp.GetService<IMqttClient>());
 });
 builder.Services.AddMediatR(cfg=>cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
 //builder.Services.AddSingleton(typeof(Dictionary<string, List<Type>>));
@@ -51,6 +52,6 @@ void ConfigureEventBus(WebApplication app)
     using var scope = app.Services.CreateScope();
     var service = scope.ServiceProvider;
     var eventBus = service.GetRequiredService<IEventBus>();
-    eventBus.Subscribe<EmailCreatedEvent,EmailEventHandler>();
+    eventBus.SubscribeToMqtt<EmailCreatedEvent,EmailEventHandler>();
 }
 

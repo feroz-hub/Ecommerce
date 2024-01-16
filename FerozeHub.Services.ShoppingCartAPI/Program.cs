@@ -11,6 +11,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using MQTTnet.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
@@ -46,7 +47,13 @@ IMapper mapping = MappingConfig.RegisterMaps().CreateMapper();
 builder.Services.AddSingleton(mapping);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-builder.Services.AddScoped<IEventBus, RabbitMqBus>();
+//builder.Services.AddScoped<IEventBus, EventBus>();
+
+builder.Services.AddScoped<IEventBus, EventBus>(sp =>
+{
+    var scopefactory = sp.GetRequiredService<IServiceScopeFactory>();
+    return new EventBus(sp.GetService<IMediator>(), scopefactory,sp.GetService<IMqttClient>());
+});
 builder.Services.AddMediatR(cfg=>cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
 builder.Services.AddSingleton(typeof(Dictionary<string, List<Type>>));
 builder.Services.AddSingleton(typeof(List<Type>));
